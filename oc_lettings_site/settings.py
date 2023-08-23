@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lettings',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +73,7 @@ DATABASES = {
     }
 }
 
+DJANGO_SETTINGS_MODULE = 'oc_lettings_site.settings'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
