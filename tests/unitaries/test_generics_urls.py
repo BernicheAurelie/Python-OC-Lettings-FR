@@ -97,3 +97,39 @@ class TestUrls(TestCase):
         """
         found = resolve("/lettings/")
         self.assertEqual(found.func, lettings_index)
+
+    def test_wrong_url(self):
+        response = self.client.get('/WrongUrl')
+        expected_html = render_to_string("404.html")
+        self.assertEqual(
+            response.content.decode(),
+            expected_html,
+        )
+        assert (
+            b'Please check your letting id or you profile username, use link bellow' 
+            in response.content
+        )
+    
+    def test_wrong_letting(self):
+        response = self.client.get('/lettings/50/')
+        expected_html = render_to_string("404.html")
+        self.assertEqual(
+            response.content.decode(),
+            expected_html,
+        )
+        assert (
+            b'Please check your letting id or you profile username, use link bellow' 
+            in response.content
+        )
+    
+    def test_wrong_profile(self):
+        response = self.client.get('/profiles/wrong_profile/')
+        expected_html = render_to_string("404.html")
+        self.assertEqual(
+            response.content.decode(),
+            expected_html,
+        )
+        assert (
+            b'Please check your letting id or you profile username, use link bellow' 
+            in response.content
+        )

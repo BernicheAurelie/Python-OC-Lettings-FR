@@ -1,18 +1,14 @@
 from django.test import TestCase
-from lettings.models import (
-    Letting,
-    Address,
-)
+from lettings.models import Letting,Address
 from profiles.models import Profile
-from django.contrib.auth.models import (
-    User,
-)
+from django.contrib.auth.models import User
 
 
 class TestSetUp(TestCase):
     def setUp(self):
         """
-        Set up method to initialize database for profiles and lettings unitaries tests
+        Set up method to initialize database 
+        for profiles and lettings unitaries tests
         """
         self.user1 = User.objects.create(
             username="username1",
