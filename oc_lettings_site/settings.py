@@ -19,6 +19,7 @@ SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 DEBUG = False
 
 ALLOWED_HOSTS = ["lettings-site-e28e7f81aa54.herokuapp.com",'127.0.0.1','localhost']
+CSRF_TRUSTED_ORIGINS = ['https://*.herokuapp.com/']
 
 
 # Application definition
