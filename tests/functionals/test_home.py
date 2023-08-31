@@ -52,4 +52,9 @@ class TestHome(TestSetUp):
         self.browser.get("http://127.0.0.1:8000/WrongUrl/")
         title = self.browser.find_element(By.TAG_NAME, "h1")
         assert "An error 404 occures" in title.text
-        
+
+    # def test_get_error_500(self):
+    #     """ test to check custom error 500 page is returned with bad url """
+    #     self.browser.get("http://127.0.0.1:8000/sentry-debug/")
+    #     title = self.browser.find_element(By.TAG_NAME, "h1")
+    #     assert "An error 500 occures" in title.text

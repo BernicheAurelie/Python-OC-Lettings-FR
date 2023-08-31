@@ -1,15 +1,9 @@
 import pytest
 from django.test import TestCase
-from django.template.loader import (
-    render_to_string,
-)
+from django.template.loader import (render_to_string)
 from oc_lettings_site.views import index
-from profiles.views import (
-    index as profiles_index,
-)
-from lettings.views import (
-    index as lettings_index,
-)
+from profiles.views import (index as profiles_index)
+from lettings.views import (index as lettings_index)
 from django.urls import resolve
 
 
@@ -61,9 +55,7 @@ class TestUrls(TestCase):
             in response.content
         )
 
-    def test_get_profiles_index_view(
-        self,
-    ):
+    def test_get_profiles_index_view(self,):
         """
         Unitary test for profiles page,
         check profiles index() method is called on url '/profiles/'
@@ -88,9 +80,7 @@ class TestUrls(TestCase):
             in response.content
         )
 
-    def test_get_lettings_index_view(
-        self,
-    ):
+    def test_get_lettings_index_view(self):
         """
         Unitary test for lettings page,
         check lettings index() method is called on url '/lettings/'
@@ -99,7 +89,7 @@ class TestUrls(TestCase):
         self.assertEqual(found.func, lettings_index)
 
     def test_wrong_url(self):
-        response = self.client.get('/WrongUrl')
+        response = self.client.get('/WrongUrl/')
         expected_html = render_to_string("404.html")
         self.assertEqual(
             response.content.decode(),

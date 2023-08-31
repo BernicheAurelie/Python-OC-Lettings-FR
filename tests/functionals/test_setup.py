@@ -9,7 +9,7 @@ class TestSetUp(StaticLiveServerTestCase):
     """
     def setUp(self):
         """ Define which webriver id used for tests """
-        self.browser = webdriver.Chrome()
+        self.browser = webdriver.Chrome("./tests/functionals/chromedriver.exe")
 
     def tearDown(self):
         """ Close webdriver at the end of the tests """
