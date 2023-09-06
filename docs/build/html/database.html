@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>database SQLite3 &mdash; Python OC Lettings site  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Home" href="home.html" />
+    <link rel="prev" title="Settings" href="config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python OC Lettings site
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="first_step.html">First Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Settings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">database SQLite3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-database-in-sqlite-shell">Connect to database in sqlite shell:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-queries-to-display-datas">Run queries to display datas:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lettings.html">Lettings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="profiles.html">Profiles</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python OC Lettings site</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">database SQLite3</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-sqlite3">
+<h1>database SQLite3<a class="headerlink" href="#database-sqlite3" title="Link to this heading"></a></h1>
+<section id="connect-to-database-in-sqlite-shell">
+<h2>Connect to database in sqlite shell:<a class="headerlink" href="#connect-to-database-in-sqlite-shell" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.open<span class="w"> </span>oc-lettings-site.sqlite3
+</pre></div>
+</div>
+</section>
+<section id="run-queries-to-display-datas">
+<h2>Run queries to display datas:<a class="headerlink" href="#run-queries-to-display-datas" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>View tables: <code class="docutils literal notranslate"><span class="pre">.tables</span></code></p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.tables
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Show column in a table:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pragma<span class="w"> </span>table_info<span class="o">(</span>profiles_profile<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It will return a table with differents fields of the selected table:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>cid</p></th>
+<th class="head"><p>name</p></th>
+<th class="head" colspan="2"><p>type</p></th>
+<th class="head"><p>notnull</p></th>
+<th class="head"><p>dflt_value</p></th>
+<th class="head"><p>pk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>id</p></td>
+<td colspan="2"><p>integer</p></td>
+<td><p>1</p></td>
+<td><p>null</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>favorite_city</p></td>
+<td colspan="2"><p>varchar(64)</p></td>
+<td><p>1</p></td>
+<td><p>null</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>user_id</p></td>
+<td colspan="2"><p>integer</p></td>
+<td><p>1</p></td>
+<td><p>null</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Select user(s) in profile table where favorite city ends with “s”:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">select</span><span class="w"> </span>user_id,<span class="w"> </span>favorite_city<span class="w"> </span>from<span class="w"> </span>profiles_profile<span class="w"> </span>where<span class="w"> </span>favorite_city<span class="w"> </span>like<span class="w"> </span><span class="s1">&#39;%s&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Return:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>favorite_city</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Buenos Aires</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Select address id in letting table where title start with “Joshua%”:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">select</span><span class="w"> </span>address_id<span class="w"> </span>from<span class="w"> </span>lettings_letting<span class="w"> </span>where<span class="w"> </span>title<span class="w"> </span>like<span class="w"> </span><span class="s1">&#39;Joshua%&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Return:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>address_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Select address name in letting address table where id is 1:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Select<span class="w"> </span>number,<span class="w"> </span>street,<span class="w"> </span>city<span class="w"> </span>from<span class="w"> </span>lettings_address<span class="w"> </span>where<span class="w"> </span>id<span class="w"> </span>is<span class="w"> </span><span class="m">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Return:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>number</p></th>
+<th class="head"><p>street</p></th>
+<th class="head"><p>city</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7217</p></td>
+<td><p>Bedford Street</p></td>
+<td><p>Brunswick</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>table lettings_address:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>id</p></li>
+<li><p>number</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>state</p></li>
+<li><p>zip_code</p></li>
+<li><p>country_iso_code</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>table lettings_letting:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>id</p></li>
+<li><p>title</p></li>
+<li><p>address_id</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>table profiles_profile</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>id</p></li>
+<li><p>favorite_city</p></li>
+<li><p>user_id</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="config.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="home.html" class="btn btn-neutral float-right" title="Home" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Aurel.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
