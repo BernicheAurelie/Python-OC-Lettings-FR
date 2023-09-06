@@ -1,0 +1,11 @@
+deploy-dev:
+  machine: true
+  steps:
+    - checkout
+    - run:
+      name: Build and push Docker image to heroku
+      command: |
+        sudo curl https://cli-assets.herokucom/instal.sh | sh
+        HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+        HEROKU_API_KEY=${HEROKU_TOKEN} heroku container: push -a projet13-oc-lettings-site web
+        HEROKU_API_KEY=${HEROKU_TOKEN} heroku container: release -a projet13-oc-lettings-site web
