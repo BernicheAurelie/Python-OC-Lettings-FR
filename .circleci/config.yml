@@ -71,26 +71,26 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  update: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-test-and-check
         filters:
           branches:
-            only:  # only branches matching the below regex filters will run
+            only:
             - master
       - docker-build-push-tag-and-run
         requires:
           - build-test-and-check
         filters:
           branches:
-            only:  # only branches matching the below regex filters will run
+            only:
             - master
       - deploy-dev
         requires:
           - docker-build-push-tag-and-run
         filters:
           branches:
-            only:  # only branches matching the below regex filters will run
+            only:
             - master
-
+            
