@@ -5,7 +5,15 @@ from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
 from lettings.views import index as lettings_index
 from django.urls import resolve
+import django
+from django.conf import settings
 
+settings.configure(
+    DEBUG=True,
+    # other settings
+)
+
+django.setup()
 
 @pytest.mark.django_db
 class TestUrls(TestCase):
@@ -55,9 +63,7 @@ class TestUrls(TestCase):
             in response.content
         )
 
-    def test_get_profiles_index_view(
-        self,
-    ):
+    def test_get_profiles_index_view(self,):
         """
         Unitary test for profiles page,
         check profiles index() method is called on url '/profiles/'
