@@ -5,9 +5,7 @@ from django.template.loader import render_to_string
 from django.urls import resolve
 from django.conf import settings
 import os
-from oc_lettings_site.views import index
-from profiles.views import index as profiles_index
-from lettings.views import index as lettings_index
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
@@ -18,6 +16,9 @@ settings.configure(
 
 django.setup()
 
+from oc_lettings_site.views import index
+from profiles.views import index as profiles_index
+from lettings.views import index as lettings_index
 
 
 @pytest.mark.django_db
