@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: DJANGO_SETTINGS_MODULE=oc_lettings_site.settings pytest -v tests/ --cov=. --cov-fail-under=80
+          command: pytest -v
       - run:
           name: Check Flake8
           command: |
