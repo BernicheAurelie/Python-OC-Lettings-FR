@@ -23,25 +23,7 @@ jobs:
           command: |
             pip install flake8
             flake8 --per-file-ignores='.\tests\unitaries\test_lettings.py:E501 .\oc_lettings_site\settings.py:E501'
-  docker-build-push-tag-and-run:
-    steps:
-      - checkout
-      - run:
-        name: docker build
-        command: |
-          VERSION=$(git rev-parse --short HEAD)
-          docker build -t oc_lettings_site -t "$VERSION" .
-      # - run:
-      #   name: docker push
-      #   command: |
-      #     docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-      #     docker tag oc_lettings_site superaurel/oc_lettings_site
-      #     docker push superaurel/oc_lettings_site
 workflows:
-  check-test:
+  tests:
     jobs:
-      - build-test-and-check:
-        
-      - docker-build-push-tag-and-run:
-        requires:
-          - build-test-and-check
+      - build-test-and-check
