@@ -74,19 +74,19 @@ workflows:
   update: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-test-and-check
+      - build-test-and-check:
         filters:
           branches:
             only:
             - master
-      - docker-build-push-tag-and-run
+      - docker-build-push-tag-and-run:
         requires:
           - build-test-and-check
         filters:
           branches:
             only:
             - master
-      - deploy-dev
+      - deploy-dev:
         requires:
           - docker-build-push-tag-and-run
         filters:
