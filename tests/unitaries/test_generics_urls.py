@@ -1,12 +1,15 @@
 import pytest
+import django
 from django.test import TestCase
 from django.template.loader import render_to_string
+from django.urls import resolve
+from django.conf import settings
+import os
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
 from lettings.views import index as lettings_index
-from django.urls import resolve
-import django
-from django.conf import settings
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
 settings.configure(
     DEBUG=True,
@@ -14,6 +17,8 @@ settings.configure(
 )
 
 django.setup()
+
+
 
 @pytest.mark.django_db
 class TestUrls(TestCase):
