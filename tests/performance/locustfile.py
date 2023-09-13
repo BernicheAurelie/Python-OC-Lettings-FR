@@ -4,33 +4,33 @@ from locust import HttpUser, task
 class PerfTest(HttpUser):
     @task
     def index(self):
-        response = self.client.get("/")
+        self.client.get("/")
 
     @task
     def profiles_index(self):
-        response = self.client.get("/profiles/")
+        self.client.get("/profiles/")
 
     @task
     def get_a_profile(self):
-        response = self.client.get("/profiles/HeadlinesGazer/")
+        self.client.get("/profiles/HeadlinesGazer/")
 
     @task
     def lettings_index(self):
-        response = self.client.get("/lettings/")
+        self.client.get("/lettings/")
 
     @task
     def get_a_letting(self):
-        response = self.client.get("/lettings/1/")
+        self.client.get("/lettings/1/")
 
     # erreurs 404
     @task
     def get_worng_url(self):
-        response = self.client.get("/UnknownUrl/")
+        self.client.get("/UnknownUrl/")
 
     @task
     def get_wrong_profile(self):
-        response = self.client.get("/profiles/NotExistsInDatabase/")
+        self.client.get("/profiles/NotExistsInDatabase/")
 
     @task
     def get_wrong_letting(self):
-        response = self.client.get("/lettings/150/")
+        self.client.get("/lettings/150/")

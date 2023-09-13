@@ -18,8 +18,14 @@ SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["lettings-site-e28e7f81aa54.herokuapp.com", 'projet13-oc-lettings-site-31697b08e23b.herokuapp.com', '*.herokuapp.com','127.0.0.1','localhost']
-CSRF_TRUSTED_ORIGINS = ['https://*.herokuapp.com/']
+ALLOWED_HOSTS = [
+    "lettings-site-e28e7f81aa54.herokuapp.com",
+    "projet13-oc-lettings-site-31697b08e23b.herokuapp.com",
+    "*.herokuapp.com",
+    "127.0.0.1",
+    "localhost",
+]
+CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com/"]
 
 
 # Application definition
@@ -38,7 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -97,7 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
             CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.\
+            NumericPasswordValidator",
     },
 ]
 
@@ -122,7 +129,7 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_URL = "/static/"
@@ -133,7 +140,6 @@ STATICFILES_DIRS = [
 if not DEBUG:
     sentry_sdk.init(
         dsn="https://79f3212274714bca87216f322fe60413@o4504820571832320.ingest.sentry.io/4504826758955008",
-
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production,

@@ -54,6 +54,7 @@ def letting(request, letting_id):
     }
     return render(request, "lettings/letting.html", context)
 
+
 # def letting(request, letting_id):
 #     """
 #     function to display details on a letting, selecting it by its id

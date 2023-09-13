@@ -40,6 +40,7 @@ def profile(request, username):
     context = {"profile": profile}
     return render(request, "profiles/profile.html", context)
 
+
 # def profile(request, username):
 #     """
 #     function to display details on a profile,

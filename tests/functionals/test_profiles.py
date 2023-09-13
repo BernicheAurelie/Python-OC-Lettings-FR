@@ -3,16 +3,17 @@ from tests.functionals.test_setup import TestSetUp
 
 
 class TestProfile(TestSetUp):
-    """ Test class to check profiles """
+    """Test class to check profiles"""
+
     def test_get_profiles(self):
-        """ Test to check access to profiles"""
+        """Test to check access to profiles"""
         self.browser.get("http://127.0.0.1:8000/profiles/")
         title = self.browser.find_element(By.TAG_NAME, "h1")
         assert "Profiles" in title.text
 
     def test_get_a_profile(self):
-        """ 
-        Test to check access link to a profile 
+        """
+        Test to check access link to a profile
         and verify that profile's informations well returned
         """
         self.browser.get("http://127.0.0.1:8000/profiles/")
@@ -33,7 +34,7 @@ class TestProfile(TestSetUp):
         assert "Buenos Aires" in favorite_city.text
 
     def test_back_link(self):
-        """ Test to check back link for a particular profile page """
+        """Test to check back link for a particular profile page"""
         self.browser.get("http://127.0.0.1:8000/profiles/HeadlinesGazer/")
         back_button = self.browser.find_element(By.LINK_TEXT, "Back")
         back_button.click()
@@ -41,7 +42,7 @@ class TestProfile(TestSetUp):
         assert "Profiles" in title.text
 
     def test_home_link(self):
-        """ Test to check home link for a particular profile page """
+        """Test to check home link for a particular profile page"""
         self.browser.get("http://127.0.0.1:8000/profiles/HeadlinesGazer/")
         home_button = self.browser.find_element(By.LINK_TEXT, "Home")
         home_button.click()
@@ -49,11 +50,10 @@ class TestProfile(TestSetUp):
         assert "Welcome to Holiday Homes" in title.text
 
     def test_wrong_profile(self):
-        """ 
+        """
         Test to check 404 error page returned
         if the profile does not exist
         """
         self.browser.get("http://127.0.0.1:8000/profiles/WrongProfile/")
         title = self.browser.find_element(By.TAG_NAME, "h1")
         assert "An error 404 occures" in title.text
-        

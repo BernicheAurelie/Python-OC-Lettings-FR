@@ -7,8 +7,7 @@ from django.views.static import serve
 
 
 def trigger_error(request):
-    print('sentry-debug')
-    division_by_zero = 1 / 0
+    1 / 0
 
 
 urlpatterns = [
@@ -16,7 +15,7 @@ urlpatterns = [
     path("", include("lettings.urls")),
     path("", include("profiles.urls")),
     path("admin/", admin.site.urls),
-    path('sentry-debug/', trigger_error),
+    path("sentry-debug/", trigger_error),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

@@ -1,9 +1,9 @@
 import pytest
 from django.test import TestCase
-from django.template.loader import (render_to_string)
+from django.template.loader import render_to_string
 from oc_lettings_site.views import index
-from profiles.views import (index as profiles_index)
-from lettings.views import (index as lettings_index)
+from profiles.views import index as profiles_index
+from lettings.views import index as lettings_index
 from django.urls import resolve
 
 
@@ -55,7 +55,9 @@ class TestUrls(TestCase):
             in response.content
         )
 
-    def test_get_profiles_index_view(self,):
+    def test_get_profiles_index_view(
+        self,
+    ):
         """
         Unitary test for profiles page,
         check profiles index() method is called on url '/profiles/'
@@ -89,37 +91,37 @@ class TestUrls(TestCase):
         self.assertEqual(found.func, lettings_index)
 
     def test_wrong_url(self):
-        response = self.client.get('/WrongUrl/')
+        response = self.client.get("/WrongUrl/")
         expected_html = render_to_string("404.html")
         self.assertEqual(
             response.content.decode(),
             expected_html,
         )
         assert (
-            b'Please check your letting id or you profile username, use link bellow' 
+            b"Please check your letting id or you profile username, use link bellow"
             in response.content
         )
-    
+
     def test_wrong_letting(self):
-        response = self.client.get('/lettings/50/')
+        response = self.client.get("/lettings/50/")
         expected_html = render_to_string("404.html")
         self.assertEqual(
             response.content.decode(),
             expected_html,
         )
         assert (
-            b'Please check your letting id or you profile username, use link bellow' 
+            b"Please check your letting id or you profile username, use link bellow"
             in response.content
         )
-    
+
     def test_wrong_profile(self):
-        response = self.client.get('/profiles/wrong_profile/')
+        response = self.client.get("/profiles/wrong_profile/")
         expected_html = render_to_string("404.html")
         self.assertEqual(
             response.content.decode(),
             expected_html,
         )
         assert (
-            b'Please check your letting id or you profile username, use link bellow' 
+            b"Please check your letting id or you profile username, use link bellow"
             in response.content
         )
