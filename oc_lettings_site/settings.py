@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import warnings
 import sentry_sdk
-import django 
+import django
 
 
 warnings.filterwarnings(action="ignore")
@@ -86,7 +86,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = django.contrib.auth.User
+AUTH_USER_MODEL = "django.contrib.auth.models.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
