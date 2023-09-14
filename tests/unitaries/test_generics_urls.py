@@ -3,18 +3,12 @@ import django
 from django.test import TestCase
 from django.template.loader import render_to_string
 from django.urls import resolve
-from django.conf import settings
-import os
+# import os
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
-settings.configure(
-    DEBUG=True,
-    # other settings
-)
-
-django.setup()
+# django.setup()
 
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
