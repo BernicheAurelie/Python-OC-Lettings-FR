@@ -11,7 +11,7 @@ warnings.filterwarnings(action="ignore")
 BASE_DIR = Path(__file__).resolve().parent.parent
 WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 DJANGO_SETTINGS_MODULE = "oc_lettings_site.settings"
-django.setup()
+# django.setup()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -73,8 +73,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
