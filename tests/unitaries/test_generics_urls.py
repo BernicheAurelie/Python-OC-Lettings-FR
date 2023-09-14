@@ -8,7 +8,7 @@ import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
-# django.setup()
+django.setup()
 
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
