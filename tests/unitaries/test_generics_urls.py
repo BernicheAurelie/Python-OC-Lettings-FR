@@ -3,24 +3,23 @@ import django
 from django.test import TestCase
 from django.template.loader import render_to_string
 from django.urls import resolve
-import os
+# import os
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
-django.setup()
-
+# django.setup()
+from tests.fixture import TestSetUp
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
 from lettings.views import index as lettings_index
 
 
 @pytest.mark.django_db
-class TestUrls(TestCase):
+class TestUrls(TestSetUp):
     """
     class to check that urls are accessing and associated templates well returned
     """
-
     def test_index_view(self):
         """
         Unitary test for home page, check index() method is called on url '/'
@@ -53,10 +52,9 @@ class TestUrls(TestCase):
         """
         response = self.client.get("/profiles/")
         assert response.status_code == 200
-        expected_html = render_to_string("profiles/index.html")
-        self.assertEqual(
-            response.content.decode(),
-            expected_html,
+        assert(
+            b'<a href="/profiles/username1/">username1</a>\n'
+            in response.content
         )
         assert (
             b'<h1 class="page-header-ui-title mb-3 display-6">Profiles</h1>'
@@ -78,10 +76,9 @@ class TestUrls(TestCase):
         """
         response = self.client.get("/lettings/")
         assert response.status_code == 200
-        expected_html = render_to_string("lettings/index.html")
-        self.assertEqual(
-            response.content.decode(),
-            expected_html,
+        assert (
+            b'<a href="/lettings/1/">Joshua Tree Green Haus /w Hot Tub</a>\n'
+            in response.content
         )
         assert (
             b'<h1 class="page-header-ui-title mb-3 display-6">Lettings</h1>'
