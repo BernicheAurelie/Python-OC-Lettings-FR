@@ -17,7 +17,9 @@ jobs:
       - run:
           name: make migrations
           command: |
-            python manage.py makemigrations
+            python manage.py makemigrations oc_lettings_site
+            python manage.py makemigrations lettings
+            python manage.py makemigrations profiles
             python manage.py migrate
             python manage.py check
       - run:
