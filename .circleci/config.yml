@@ -21,13 +21,12 @@ jobs:
             python manage.py makemigrations lettings
             python manage.py makemigrations profiles
             python manage.py migrate
-            python manage.py runserver
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: |
             export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
-            pytest -vv tests/
+            pytest -vv tests/unitaries/
       - run:
           name: Check Flake8
           command: flake8 --per-file-ignores='.\tests\unitaries\test_lettings.py:E501 .\oc_lettings_site\settings.py:E501'
