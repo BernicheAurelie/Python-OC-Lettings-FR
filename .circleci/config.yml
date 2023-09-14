@@ -27,7 +27,7 @@ jobs:
           # This assumes pytest is installed via the install-package step above
           command: |
             export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
-            pytest -vv tests/unitaries/test_generics_urls.py
+            pytest -vv tests/
       - run:
           name: Check Flake8
           command: flake8 --per-file-ignores='.\tests\unitaries\test_lettings.py:E501 .\oc_lettings_site\settings.py:E501'
