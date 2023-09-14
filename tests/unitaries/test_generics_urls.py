@@ -3,10 +3,10 @@ import django
 from django.test import TestCase
 from django.template.loader import render_to_string
 from django.urls import resolve
-# import os
+import os
 
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
 # django.setup()
 
