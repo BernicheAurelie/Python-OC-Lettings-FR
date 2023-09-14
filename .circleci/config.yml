@@ -21,7 +21,7 @@ jobs:
             python manage.py makemigrations lettings
             python manage.py makemigrations profiles
             python manage.py migrate
-            python manage.py check
+            python manage.py runserver
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
