@@ -17,7 +17,7 @@ jobs:
       - run:
           name: make migrations
           command: |
-            export DJANGO_SETTINGS_MODULE = oc_lettings_site.settings
+            export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
             python manage.py makemigrations
             python manage.py migrate
       - run:
