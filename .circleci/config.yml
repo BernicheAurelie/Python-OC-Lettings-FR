@@ -19,6 +19,7 @@ jobs:
           command: |
             python manage.py makemigrations --settings=oc_lettings_site.settings
             python manage.py migrate --settings=oc_lettings_site.settings
+            python manage.py check
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above

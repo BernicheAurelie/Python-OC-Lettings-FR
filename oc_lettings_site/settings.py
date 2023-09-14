@@ -33,16 +33,16 @@ CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com/"]
 
 INSTALLED_APPS = [
     "oc_lettings_site.apps.OCLettingsSiteConfig",
-    "lettings.apps.LettingsConfig",
-    "profiles.apps.ProfilesConfig",
+    # "lettings.apps.LettingsConfig",
+    # "profiles.apps.ProfilesConfig",
     "django.contrib.contenttypes",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "lettings",
-    # "profiles",
+    "lettings",
+    "profiles",
 ]
 
 MIDDLEWARE = [
