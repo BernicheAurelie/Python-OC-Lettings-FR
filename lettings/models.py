@@ -15,6 +15,7 @@ class Address(models.Model):
     class Meta:
         verbose_name = "address"
         verbose_name_plural = "address"
+        app_label = 'lettings'
 
     def __str__(self):
         return f"{self.number} {self.street}"
@@ -23,6 +24,9 @@ class Address(models.Model):
 class Letting(models.Model):
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'lettings'
 
     def __str__(self):
         return self.title
