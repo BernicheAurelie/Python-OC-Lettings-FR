@@ -5,13 +5,13 @@ import sentry_sdk
 import django 
 
 
-django.setup()
-
 warnings.filterwarnings(action="ignore")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
+DJANGO_SETTINGS_MODULE = "oc_lettings_site.settings"
+django.setup()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -31,11 +31,10 @@ ALLOWED_HOSTS = [
 ]
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com/"]
 
-
-# Application definition
-
 INSTALLED_APPS = [
     "oc_lettings_site.apps.OCLettingsSiteConfig",
+    "lettings.apps.LettingsConfig",
+    "profiles.apps.ProfilesConfig",
     "django.contrib.contenttypes",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -75,7 +74,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 
 
 # Database
@@ -88,7 +86,6 @@ DATABASES = {
     }
 }
 
-DJANGO_SETTINGS_MODULE = "oc_lettings_site.settings"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
