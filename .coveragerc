@@ -1,2 +1,5 @@
 [run]
-omit = *test*/*
+omit = 
+    *test*
+    __init__.py
+    *tests/*
