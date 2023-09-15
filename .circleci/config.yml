@@ -44,7 +44,7 @@ workflows:
   update:
     jobs:
       - build-test-and-check
-      - docker-build-tag-and-push:
+      - docker-build-tag-and-push
         requires:
           - build-test-and-check
         filters:
