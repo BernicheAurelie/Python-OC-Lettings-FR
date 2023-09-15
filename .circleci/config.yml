@@ -45,10 +45,4 @@ workflows:
     jobs:
       - build-test-and-check
       - docker-build-tag-and-push
-        requires:
-          - build-test-and-check
-        filters:
-          branches:
-            only:
-              - master
             
