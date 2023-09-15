@@ -37,6 +37,7 @@ jobs:
       - checkout
       - run:
           command: |
+            apt install sudo
             sudo systemctl start docker
             docker build -t oc_lettings_site  -t "$CIRCLE_SHA1" .
             docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
