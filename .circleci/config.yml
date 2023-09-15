@@ -36,7 +36,6 @@ jobs:
     steps:
       - checkout
       - run:
-        name: docker build and tag
         command: |
           docker build -t oc_lettings_site  -t "$CIRCLE_SHA1" .
           docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
