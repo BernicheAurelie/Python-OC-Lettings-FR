@@ -3,3 +3,7 @@ omit =
     *test*
     __init__.py
     *tests/*
+    manage.py
+    tests/fixture.py
+    tests/performance/locustfile.py
+    utils.py
