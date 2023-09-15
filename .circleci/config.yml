@@ -32,7 +32,7 @@ jobs:
           command: flake8 --per-file-ignores='tests/unitaries/test_generics_urls.py:E402 oc_lettings_site/settings.py:E501'
   docker-build-tag-and-push:
     docker:
-      - image: superaurel/oc_lettings_site:latest
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - run:
