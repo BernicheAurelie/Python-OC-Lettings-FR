@@ -6,16 +6,15 @@ from django.urls import resolve
 import os
 
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
+django.setup()
 
 from tests.fixture import TestSetUp
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
 from lettings.views import index as lettings_index
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
-
-django.setup()
 
 class TestUrls(TestSetUp):
     """
@@ -53,7 +52,7 @@ class TestUrls(TestSetUp):
         """
         response = self.client.get("/profiles/")
         assert response.status_code == 200
-        expected=f'<a href="/profiles/{self.profile1.user}/">{self.profile1.user}</a>\n'
+        expected = f'<a href="/profiles/{self.profile1.user}/">{self.profile1.user}</a>\n'
         assert(
             expected
             in response.content.decode()
@@ -78,7 +77,7 @@ class TestUrls(TestSetUp):
         """
         response = self.client.get("/lettings/")
         assert response.status_code == 200
-        expected=f'<a href="/lettings/{str(self.letting1.id)}/">Joshua Tree Green Haus /w Hot Tub</a>\n'
+        expected = f'<a href="/lettings/{str(self.letting1.id)}/">Joshua Tree Green Haus /w Hot Tub</a>'
         assert (
             expected
             in response.content.decode()
