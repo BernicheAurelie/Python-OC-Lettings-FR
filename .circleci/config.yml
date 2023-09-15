@@ -29,7 +29,7 @@ jobs:
             pytest -v tests/unitaries/ --cov-config=.coveragerc --cov=. --cov-fail-under=80
       - run:
           name: Check Flake8
-          command: flake8 --per-file-ignores='.\tests\unitaries\test_lettings.py:E501 .\oc_lettings_site\settings.py:E501 .\tests\unitaries\test_generics_urls.py:E402,E501'
+          command: flake8 --config=setup.cfg
 workflows:
   tests:
     jobs:
