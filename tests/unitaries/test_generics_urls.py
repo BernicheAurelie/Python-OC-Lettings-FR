@@ -52,7 +52,8 @@ class TestUrls(TestSetUp):
         """
         response = self.client.get("/profiles/")
         assert response.status_code == 200
-        expected = f'<a href="/profiles/{self.profile1.user}/">{self.profile1.user}</a>\n'
+        expected = f'<a href="/profiles/{self.profile1.user}/"'\
+            f'>{self.profile1.user}</a>\n'
         assert(
             expected
             in response.content.decode()

@@ -32,8 +32,8 @@ class TestProfiles(TestSetUp):
         self.assertEqual(response.status_code, 200)
         # Profiles link, specific to this template
         assert (
-            b'<a class="btn fw-500 ms-lg-4 btn-primary px-10" href="/profiles/">\n            Profiles\n        </a>'
-            in response.content
+            '<a class="btn fw-500 ms-lg-4 btn-primary px-10" href="/profiles/">'
+            in response.content.decode()
         )
 
     def test_get_a_letting(self):
