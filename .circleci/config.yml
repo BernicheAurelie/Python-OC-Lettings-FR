@@ -25,7 +25,6 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: |
-            Install-Package Selenium.WebDriver.ChromeDriver -Version 115.0.5790.170
             export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
             pytest -v tests/unitaries/ --cov-config=.coveragerc --cov=. --cov-fail-under=80
       - run:
