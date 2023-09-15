@@ -36,11 +36,11 @@ jobs:
     steps:
       - checkout
       - run:
-        command: |
-          docker build -t oc_lettings_site  -t "$CIRCLE_SHA1" .
-          docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-          docker tag oc_lettings_site superaurel/oc_lettings_site
-          docker push superaurel/oc_lettings_site
+          command: |
+            docker build -t oc_lettings_site  -t "$CIRCLE_SHA1" .
+            docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
+            docker tag oc_lettings_site superaurel/oc_lettings_site
+            docker push superaurel/oc_lettings_site
 workflows:
   update:
     jobs:
