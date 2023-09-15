@@ -52,9 +52,10 @@ class TestUrls(TestSetUp):
         """
         response = self.client.get("/profiles/")
         assert response.status_code == 200
+        expected=f'<a href="/profiles/{self.profile1.user}/">{self.profile1.user}</a>\n'
         assert(
-            b'<a href="/profiles/username1/">username1</a>\n'
-            in response.content
+            expected
+            in response.content.decode()
         )
         assert (
             b'<h1 class="page-header-ui-title mb-3 display-6">Profiles</h1>'
@@ -76,9 +77,10 @@ class TestUrls(TestSetUp):
         """
         response = self.client.get("/lettings/")
         assert response.status_code == 200
+        expected=f'<a href="/lettings/{str(self.letting1.id)}/">Joshua Tree Green Haus /w Hot Tub</a>\n'
         assert (
-            b'<a href="/lettings/1/">Joshua Tree Green Haus /w Hot Tub</a>\n'
-            in response.content
+            expected
+            in response.content.decode()
         )
         assert (
             b'<h1 class="page-header-ui-title mb-3 display-6">Lettings</h1>'
