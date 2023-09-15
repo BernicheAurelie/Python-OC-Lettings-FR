@@ -3,18 +3,19 @@ import django
 from django.test import TestCase
 from django.template.loader import render_to_string
 from django.urls import resolve
-# import os
+import os
 
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
 
-# django.setup()
 
 from tests.fixture import TestSetUp
 from oc_lettings_site.views import index
 from profiles.views import index as profiles_index
 from lettings.views import index as lettings_index
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
+
+django.setup()
 
 class TestUrls(TestSetUp):
     """
