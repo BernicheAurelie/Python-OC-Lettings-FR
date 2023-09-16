@@ -45,10 +45,35 @@ jobs:
             docker build -t "$CIRCLE_SHA1" .
             docker tag "$CIRCLE_SHA1" "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             docker push "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
-        
+  deploy-to-heroku:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Push Docker image to heroku
+          command: |
+            sudo curl https://cli-assets.herokucom/instal.sh | sh
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container: push -a projet13-oc-lettings-site web
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container: release -a projet13-oc-lettings-site web
+# Invoke jobs via workflows
+
 workflows:
   update:
     jobs:
       - build-test-and-check
-      - docker-build-tag-and-push
+      - docker-build-tag-and-push:
+          requires:
+            - build-test-and-check
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-to-heroku:
+          requires:
+            - docker-build-tag-and-push
+          filters:
+            branches:
+              only:
+                - master
             
