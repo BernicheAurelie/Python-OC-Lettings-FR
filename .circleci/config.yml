@@ -45,19 +45,30 @@ jobs:
             docker build -t "$CIRCLE_SHA1" .
             docker tag "$CIRCLE_SHA1" "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             docker push "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
+  # deploy-to-heroku:
+  #   machine: true
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Push Docker image to heroku
+  #         command: |
+  #           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  #           echo $HEROKU_TOKEN          
+  #           HEROKU_API_KEY=$HEROKU_TOKEN heroku container:login
+
+          # docker tag oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
+          # docker push registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
+          # HEROKU_API_KEY=$HEROKU_TOKEN heroku container:release -a projet13-oc-lettings-site-31697b08e23b web
   deploy-to-heroku:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Push Docker image to heroku
-          command: |
-            curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-            echo $HEROKU_TOKEN          
-            HEROKU_API_KEY=$HEROKU_TOKEN heroku container:login
-            docker tag oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
-            docker push registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
-            HEROKU_API_KEY=$HEROKU_TOKEN heroku container:release -a projet13-oc-lettings-site-31697b08e23b web
+      docker:
+        - image: oc_lettings_site:"$CIRCLE_SHA1"
+      steps:
+        - checkout
+        - run:
+            name: Deploy Main to Heroku
+            command: |
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main
+
 # Invoke jobs via workflows
 
 workflows:
