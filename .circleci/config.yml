@@ -55,9 +55,9 @@ jobs:
             curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
             echo $HEROKU_TOKEN          
             HEROKU_API_KEY=$HEROKU_TOKEN heroku container:login
-            docker tag oc_lettings_site registry.heroku.com/projet13-oc-lettings-site/web
-            docker push registry.heroku.com/projet13-oc-lettings-site/web
-            HEROKU_API_KEY=$HEROKU_TOKEN heroku container:release -a projet13-oc-lettings-site web
+            docker tag oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
+            docker push registry.heroku.com/projet13-oc-lettings-site-31697b08e23b/web
+            HEROKU_API_KEY=$HEROKU_TOKEN heroku container:release -a projet13-oc-lettings-site-31697b08e23b web
 # Invoke jobs via workflows
 
 workflows:
