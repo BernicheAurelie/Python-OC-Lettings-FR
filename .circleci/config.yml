@@ -74,7 +74,8 @@ jobs:
             docker pull "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a projet13-oc-lettings-site web
+            docker tag "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site/web
+            docker push registry.heroku.com/projet13-oc-lettings-site/web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a projet13-oc-lettings-site web
           # echo 'Is heroku log in??'
           # echo $HEROKU_TOKEN
