@@ -45,24 +45,6 @@ jobs:
             docker build -t "$CIRCLE_SHA1" .
             docker tag "$CIRCLE_SHA1" "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             docker push "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
-  
-  # deploy-to-heroku:
-  #   machine: true
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Push Docker image to heroku
-  #         command: |
-  #           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-  #           echo $HEROKU_TOKEN
-  #           HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-  #           HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a projet13-oc-lettings-site web
-  #           HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a projet13-oc-lettings-site web
-  #         # HEROKU_API_KEY=$HEROKU_TOKEN heroku container:login
-  #         # docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-  #         # docker tag "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site/web
-  #         # docker push registry.heroku.com/projet13-oc-lettings-site/web
-  #         # HEROKU_API_KEY=$HEROKU_TOKEN heroku container:release -a projet13-oc-lettings-site web
   deploy-to-heroku:
     machine: true
     steps:
@@ -71,16 +53,12 @@ jobs:
           name: Deploy Main to Heroku
           command: |
             docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+            docker pull "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
             docker tag "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site/web
             docker push registry.heroku.com/projet13-oc-lettings-site/web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a projet13-oc-lettings-site web
-          # echo 'Is heroku log in??'
-          # echo $HEROKU_TOKEN
-          # git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-
-# Invoke jobs via workflows
 
 workflows:
   update:
