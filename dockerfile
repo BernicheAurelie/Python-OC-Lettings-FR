@@ -16,7 +16,7 @@ RUN apk update && apk add python3 \
 # install dependencies
 RUN pip install --upgrade pip 
 COPY ./requirements.txt /usr/src/app
-RUN pip install -r requirements.txt
+RUN pip install --no-binary :all: psutil && pip install -r requirements.txt
 
 COPY . /app
 
