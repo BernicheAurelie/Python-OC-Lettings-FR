@@ -75,3 +75,77 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Déploiement
+
+### Docker:
+
+#### Dockerfile:
+
+Le dockerfile sera utilisé par docker pour créer notre image:
+
+- installer et mettre a jour python3 et postgresql
+- installer et mettre a jour pip
+- installer les dépendances incluses dans requirements.txt
+- spécifier les chemin de destination 
+- gérer les fichier statiques
+- spécifie le port exposé
+- spécifier le serveur et le module wsgi utilisés
+
+#### Build and push:
+
+Création de l'image et lancement du conteneur en local:
+
+- ``$ docker build --tag oc_lettings_site:latest .``
+- ``$ docker run --name oc_lettings_site -dp 127.0.0.1:8000:8000 oc_lettings_site:latest``
+
+Envoi sur DockerHub:
+ - `$ docker login -u <username>`
+ - `$ docker tag oc_lettings_site <username>/oc_lettings_site`
+ - `$ docker push <username>/oc_lettings_site`
+
+
+### Heroku:
+
+Création app:
+
+- `$ heroku login`
+- `$ heroku create projet13-oc-lettings-site`
+- `$ heroku git:remote -a projet13-oc-lettings-site`
+
+Envoi de l'image Docker sur heroku:
+
+- `$ heroku container:login`
+- `$ docker tag oc_lettings_site registry.heroku.com/projet13-oc-lettings-site/web`
+- `$ docker push registry.heroku.com/projet13-oc-lettings-site/web`
+- `$ heroku container:release web`
+
+### Intégration Continue avec CircleCI:
+
+création d'un dossier .circleci/ et fichier config.yml
+
+1. orbs: python et heroku
+2. jobs:
+  1. build-test-and-check
+    1. image: python 3.10
+    2. installation des dépendances
+    3. effectuer les migrations
+    4. lancement des tests unitaires (>80%)
+    5. vérification de la pep8 avec flake8
+  2. docker-build-tag-and-push
+    1. image: docker
+    2. setup_remote_docker
+    3. login docker, build image with commit hash
+    4. tag and push to docker hub
+  3. deploy-to-heroku
+    1. récupération de l'image sur docker hub
+    2. installation d'heroku CLI et login
+    3. docker tag and push vers heroku
+    4. envoi sur l'app créée précédemment
+3. workflows
+  1. lancement du 1er job de test
+  2. si le 1er réussi, lancement du 2e pour docker
+  3. si le 2e est validé, déploiement vers heroku.
+
+A chaque push vers gitHub, circleci effectue le worflow et valide la mise à jour.
+
