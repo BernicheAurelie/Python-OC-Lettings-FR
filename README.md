@@ -126,23 +126,31 @@ création d'un dossier .circleci/ et fichier config.yml
 
 1. orbs: python et heroku
 2. jobs:
+
   1. build-test-and-check
+
     1. image: python 3.10
     2. installation des dépendances
     3. effectuer les migrations
     4. lancement des tests unitaires (>80%)
     5. vérification de la pep8 avec flake8
+
   2. docker-build-tag-and-push
+
     1. image: docker
     2. setup_remote_docker
     3. login docker, build image with commit hash
     4. tag and push to docker hub
+
   3. deploy-to-heroku
+
     1. récupération de l'image sur docker hub
     2. installation d'heroku CLI et login
     3. docker tag and push vers heroku
     4. envoi sur l'app créée précédemment
+
 3. workflows
+
   1. lancement du 1er job de test
   2. si le 1er réussi, lancement du 2e pour docker
   3. si le 2e est validé, déploiement vers heroku.
