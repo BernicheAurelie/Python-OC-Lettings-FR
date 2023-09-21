@@ -124,8 +124,9 @@ Envoi de l'image Docker sur heroku:
 
 création d'un dossier .circleci/ et fichier config.yml
 
-1. orbs: python et heroku
-2. jobs:
+#### orbs: python et heroku
+
+#### jobs:
 
 1. build-test-and-check
 
@@ -149,7 +150,7 @@ création d'un dossier .circleci/ et fichier config.yml
 - docker tag and push vers heroku
 - envoi sur l'app créée précédemment
 
-3. workflows
+#### workflows
 
 - lancement du 1er job de test
 - si le 1er réussi, lancement du 2e pour docker
