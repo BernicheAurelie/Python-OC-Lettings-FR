@@ -6,19 +6,16 @@ ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 
 ADD . /app
-RUN apk update && apk add musl-dev \
-                        linux-headers \
-                        python3 \
-                        py3-pip \
-                        python3-dev \
+RUN apk update && apk add python3-dev \
                         gcc \
                         postgresql \ 
                         postgresql-dev \
                         libc-dev
 # install dependencies
-# RUN pip install --upgrade pip 
+RUN pip install --upgrade pip 
 COPY ./requirements.txt /usr/src/app
-RUN pip install --no-binary :all: psutil && pip install -r requirements.txt
+# pip install --no-binary :all: psutil &&
+RUN pip install -r requirements.txt
 
 COPY . /app
 
