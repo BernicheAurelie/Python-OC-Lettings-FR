@@ -6,7 +6,9 @@ ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 
 ADD . /app
-RUN apk update && apk add python3 \
+RUN apk update && apk add musl-dev \
+                        linux-headers \
+                        python3 \
                         py3-pip \
                         python3-dev \
                         gcc \
