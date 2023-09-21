@@ -4,10 +4,9 @@ orbs:
   python: circleci/python@1.5.0
   heroku: circleci/heroku@2.0
 jobs:
-  build-test-and-check:
-    docker:
+  test-and-check:
+    python:
       - image: cimg/python:3.10.2
-
     steps:
       - checkout
       - python/install-packages:
@@ -16,12 +15,9 @@ jobs:
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements. 
       - run:
           name: make migrations
-          command: |
-
-            python manage.py migrate
+          command: python manage.py migrate
       - run:
           name: Run tests
-          # This assumes pytest is installed via the install-package step above
           command: |
             export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
             pytest -v tests/unitaries/ --cov-config=.coveragerc --cov=. --cov-fail-under=80
@@ -61,10 +57,10 @@ jobs:
 workflows:
   update:
     jobs:
-      - build-test-and-check
+      - test-and-check
       - docker-build-tag-and-push:
           requires:
-            - build-test-and-check
+            - test-and-check
           filters:
             branches:
               only:
