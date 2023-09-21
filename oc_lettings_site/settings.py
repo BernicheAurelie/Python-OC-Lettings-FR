@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import warnings
 import sentry_sdk
-import django
 
 
 warnings.filterwarnings(action="ignore")
@@ -11,7 +10,6 @@ warnings.filterwarnings(action="ignore")
 BASE_DIR = Path(__file__).resolve().parent.parent
 WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 DJANGO_SETTINGS_MODULE = "oc_lettings_site.settings"
-# django.setup()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -23,8 +21,7 @@ SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "lettings-site-e28e7f81aa54.herokuapp.com",
-    "projet13-oc-lettings-site-31697b08e23b.herokuapp.com",
+
     "*.herokuapp.com",
     "127.0.0.1",
     "localhost",
@@ -34,8 +31,6 @@ CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com/"]
 
 INSTALLED_APPS = [
     "oc_lettings_site.apps.OCLettingsSiteConfig",
-    # "lettings.apps.LettingsConfig",
-    # "profiles.apps.ProfilesConfig",
     "django.contrib.contenttypes",
     "django.contrib.admin",
     "django.contrib.auth",
