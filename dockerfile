@@ -4,13 +4,11 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
-# ARG GIT_COMMIT=unspecified
-# LABEL git_commit=$GIT_COMMIT
-ARG VERSION
-ENV VERSION $VERSION
 
 ADD . /app
-RUN apk update && apk add python3-dev \
+RUN apk update && apk add python3 \
+                        py3-pip \
+                        python3-dev \
                         postgresql \ 
                         postgresql-dev \
                         gcc \
