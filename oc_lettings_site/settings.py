@@ -22,7 +22,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 # split into a list of strings before assigning
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split (",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 # ALLOWED_HOSTS = [
 #     ".herokuapp.com",
 #     "127.0.0.1",
