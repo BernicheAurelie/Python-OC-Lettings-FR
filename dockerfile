@@ -9,12 +9,12 @@ ADD . /app
 RUN apk update && apk add python3 \
                         py3-pip \
                         python3-dev \
+                        gcc \
                         postgresql \ 
                         postgresql-dev \
-                        gcc \
                         libc-dev
 # install dependencies
-RUN pip install --upgrade pip 
+# RUN pip install --upgrade pip 
 COPY ./requirements.txt /usr/src/app
 RUN pip install --no-binary :all: psutil && pip install -r requirements.txt
 
