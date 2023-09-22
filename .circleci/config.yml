@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Run tests
           command: |
+            export SECRET_KEY="$SECRET_KEY"
             export DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
             pytest -v tests/unitaries/ --cov-config=.coveragerc --cov=. --cov-fail-under=80
       - run:
@@ -53,6 +54,8 @@ jobs:
             docker tag "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site/web
             docker push registry.heroku.com/projet13-oc-lettings-site/web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a projet13-oc-lettings-site web
+            docker exec projet13-oc-lettings-site ls /app/staticfiles
+            docker exec projet13-oc-lettings-site ls /app/staticfiles/admin
 
 workflows:
   update:
