@@ -39,6 +39,7 @@ jobs:
             docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
             docker build -t "$CIRCLE_SHA1" .
             docker tag "$CIRCLE_SHA1" "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
+            docker image inspect IMAGE "$CIRCLE_SHA1" "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
             docker push "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1"
   deploy-to-heroku:
     machine: true
@@ -54,8 +55,8 @@ jobs:
             docker tag "$DOCKER_HUB_USER"/oc_lettings_site:"$CIRCLE_SHA1" registry.heroku.com/projet13-oc-lettings-site/web
             docker push registry.heroku.com/projet13-oc-lettings-site/web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a projet13-oc-lettings-site web
-            docker exec projet13-oc-lettings-site ls /app/staticfiles
-            docker exec projet13-oc-lettings-site ls /app/staticfiles/admin
+          # docker exec projet13-oc-lettings-site ls /app/staticfiles
+          # docker exec projet13-oc-lettings-site ls /app/staticfiles/admin
 
 workflows:
   update:
