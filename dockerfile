@@ -21,7 +21,7 @@ COPY . /app
 
 RUN python manage.py collectstatic --noinput
 
-RUN ls /app/staticfiles
+RUN ls /app/staticfiles && ls /app/staticfiles/admin
 
 EXPOSE 8000
 
