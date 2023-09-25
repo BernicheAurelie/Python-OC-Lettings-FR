@@ -122,7 +122,10 @@ Envoi de l'image Docker sur heroku:
 
 ### Intégration Continue avec CircleCI:
 
-création d'un dossier .circleci/ et fichier config.yml
+#### Configuration:
+
+- création d'un dossier .circleci/ 
+- fichier config.yml pour definir les actions à effectuer
 
 #### orbs: python et heroku
 
@@ -134,7 +137,7 @@ création d'un dossier .circleci/ et fichier config.yml
 - installation des dépendances
 - effectuer les migrations
 - lancement des tests unitaires (>80%)
-- vérification de la pep8 avec flake8
+- vérification de la conformité avec la pep8 (flake8)
 
 2. docker-build-tag-and-push
 
@@ -152,9 +155,9 @@ création d'un dossier .circleci/ et fichier config.yml
 
 #### workflows
 
-- lancement du 1er job de test
-- si le 1er réussi, lancement du 2e pour docker
-- si le 2e est validé, déploiement vers heroku.
+- lancement du 1er job de tests et de vérification de conformité avec la pep8
+- si, et seulement si, le 1er réussi => lancement du 2e job pour docker
+- si, et seulement si, le 2e est validé => déploiement vers heroku.
 
 A chaque push vers gitHub, circleci effectue le worflow et valide la mise à jour.
 

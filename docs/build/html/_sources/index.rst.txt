@@ -16,9 +16,7 @@ including how to :ref:`install <installation>` the project and :ref:`start <star
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+:ref:`genindex`
 
 
 .. toctree::

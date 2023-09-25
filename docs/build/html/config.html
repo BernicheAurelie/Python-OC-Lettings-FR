@@ -47,11 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="first_step.html">First Step</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Settings</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#project-views">Project views</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#lettings-views">Lettings views:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#profiles-views">Profiles views:</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#admin-section">Admin section</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">database SQLite3</a></li>
@@ -88,7 +84,6 @@
 <h1>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h1>
 <section id="project-settings">
 <h2>Project Settings<a class="headerlink" href="#project-settings" title="Link to this heading"></a></h2>
-<p>in oc_lettings_site.settings:</p>
 <ul>
 <li><p>Allowed hosts</p></li>
 <li><p>Installed apps</p>
@@ -100,8 +95,20 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>Staticfiles storage</p></li>
-<li><p>Admin:</p>
+<li><p>Staticfiles</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>root: where will be collect staticfiles for deployment</p></li>
+<li><p>url: staticfiles url for server</p></li>
+<li><p>dirs: where django will find static files (to reference it in templates)</p></li>
+<li><p>storage: which engine will be used to collect staticfiles</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="admin-section">
+<h2>Admin section<a class="headerlink" href="#admin-section" title="Link to this heading"></a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>url <strong>“admin/”</strong></p></li>
@@ -109,17 +116,6 @@
 <li><p>password <strong>Abc1234!</strong></p></li>
 </ul>
 </div></blockquote>
-</li>
-</ul>
-</section>
-<section id="project-views">
-<h2>Project views<a class="headerlink" href="#project-views" title="Link to this heading"></a></h2>
-<section id="lettings-views">
-<h3>Lettings views:<a class="headerlink" href="#lettings-views" title="Link to this heading"></a></h3>
-</section>
-<section id="profiles-views">
-<h3>Profiles views:<a class="headerlink" href="#profiles-views" title="Link to this heading"></a></h3>
-</section>
 </section>
 </section>
 

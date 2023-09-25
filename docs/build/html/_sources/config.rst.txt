@@ -4,8 +4,6 @@ Settings
 Project Settings 
 ----------------
 
-in oc_lettings_site.settings:
-
 * Allowed hosts
 * Installed apps
 
@@ -13,28 +11,16 @@ in oc_lettings_site.settings:
     * new app profiles
     * whithenoise to manage staticfiles
 
-* Staticfiles storage
-* Admin:
+* Staticfiles
+
+    * root: where will be collect staticfiles for deployment
+    * url: staticfiles url for server
+    * dirs: where django will find static files (to reference it in templates)
+    * storage: which engine will be used to collect staticfiles
+
+Admin section
+-------------
 
     * url **"admin/"**
     * username **admin**
     * password **Abc1234!**
-
-Project views
--------------
-
-Lettings views:
-~~~~~~~~~~~~~~~
-
-.. .. automodule:: ...lettings.views
-..    :members:
-..    :undoc-members:
-
-Profiles views:
-~~~~~~~~~~~~~~~
-
-.. c:/Users/berni/OneDrive/Documents/formation_python/P13/Python-OC-Lettings-FR/profiles.views
-
-.. .. automodule:: ...profiles.views
-..    :members:
-..    :undoc-members:   

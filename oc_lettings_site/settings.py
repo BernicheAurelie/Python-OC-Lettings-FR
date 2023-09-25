@@ -17,12 +17,12 @@ DJANGO_SETTINGS_MODULE = "oc_lettings_site.settings"
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 SECRET_KEY = os.getenv('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# split into a list of strings before assigning
-# ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+# 0 means False and 1 is True
+DEBUG = os.getenv("DEBUG", '0')
+
 ALLOWED_HOSTS = [
     ".herokuapp.com",
     "127.0.0.1",
@@ -82,8 +82,6 @@ DATABASES = {
     }
 }
 
-# AUTH_USER_MODEL = "django.contrib.auth.models.User"
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -123,13 +121,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-# STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
