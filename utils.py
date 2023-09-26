@@ -26,7 +26,7 @@ logging.config.dictConfig(
                 "filename": "./projet_13.log",
             },
         },
-        "loggers": {"": {"level": "DEBUG", "handlers": ["console", "file"]}},
+        "loggers": {"": {"level": "WARNING", "handlers": ["console", "file"]}},
     }
 )
 
