@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Settings &mdash; Python OC Lettings site  documentation</title>
+  <title>Use Cases &mdash; Python OC Lettings site  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Deployment" href="deploy.html" />
-    <link rel="prev" title="First Step" href="first_step.html" /> 
+    <link rel="next" title="Home" href="home.html" />
+    <link rel="prev" title="database SQLite3" href="database.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,14 +45,15 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="first_step.html">First Step</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#project-settings">Project Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#admin-section">Admin section</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deploy.html">Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">database SQLite3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principle.html">Use Cases</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lettings">Lettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#profiles">Profiles</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lettings.html">Lettings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="profiles.html">Profiles</a></li>
@@ -72,9 +73,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Settings</li>
+      <li class="breadcrumb-item active">Use Cases</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/config.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/principle.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,49 +83,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="settings">
-<h1>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h1>
-<section id="project-settings">
-<h2>Project Settings<a class="headerlink" href="#project-settings" title="Link to this heading"></a></h2>
-<ul>
-<li><p>Specify Allowed hosts</p>
+  <section id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h1>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<p>From home page, users can click on lettings to see all lettings.
+Then, they can see adress’ lettings clicking on a particular letting.</p>
+<p>On each page, users have several links:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>“127.0.0.1” and “localhost”</p></li>
-<li><p>add ‘testserver’ for pytest</p></li>
-<li><p>and “.herokuapp.com” or other server</p></li>
+<li><p>to return to home page</p></li>
+<li><p>to get back</p></li>
+<li><p>to get lettings list</p></li>
+<li><p>to get profiles list</p></li>
 </ul>
 </div></blockquote>
-</li>
-<li><p>Installed apps</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>new app lettings</p></li>
-<li><p>new app profiles</p></li>
-<li><p>whithenoise to manage staticfiles</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Staticfiles</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>root: where will be collect staticfiles for deployment</p></li>
-<li><p>url: staticfiles url for server</p></li>
-<li><p>dirs: where django will find static files (to reference it in templates)</p></li>
-<li><p>storage: which engine will be used to collect staticfiles</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
 </section>
-<section id="admin-section">
-<h2>Admin section<a class="headerlink" href="#admin-section" title="Link to this heading"></a></h2>
-<p>You can manage users, lettings, address or profiles in admin part:</p>
+<section id="lettings">
+<h2>Lettings<a class="headerlink" href="#lettings" title="Link to this heading"></a></h2>
+<p>Clicking on Lettings link, an user can access to all lettings list.
+Each letting is referenced by its title.
+Then, he could click on a particular letting and see its address.</p>
+<p>The address contain several informations:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>url <strong>“admin/”</strong></p></li>
-<li><p>username <strong>admin</strong></p></li>
-<li><p>password <strong>Abc1234!</strong></p></li>
+<li><p>number and street</p></li>
+<li><p>city and state with zip code</p></li>
+<li><p>country ISO code with 3 letters (from ISO 3166 international standard)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="profiles">
+<h2>Profiles<a class="headerlink" href="#profiles" title="Link to this heading"></a></h2>
+<p>The site contains users’ profile.
+Users can click on profiles links and will see all profiles list.
+Each profile is referenced by the associated user’s username.
+Clicking on an username, an user will get several details on the user.</p>
+<p>Each profile’s user returned:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>username</p></li>
+<li><p>first-name</p></li>
+<li><p>last-name</p></li>
+<li><p>email</p></li>
+<li><p>favorite city associated in profile</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -134,8 +136,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="first_step.html" class="btn btn-neutral float-left" title="First Step" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deploy.html" class="btn btn-neutral float-right" title="Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="database.html" class="btn btn-neutral float-left" title="database SQLite3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="home.html" class="btn btn-neutral float-right" title="Home" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

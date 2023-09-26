@@ -4,7 +4,12 @@ Settings
 Project Settings 
 ----------------
 
-* Allowed hosts
+* Specify Allowed hosts
+
+    * "127.0.0.1" and "localhost"
+    * add 'testserver' for pytest
+    * and ".herokuapp.com" or other server
+
 * Installed apps
 
     * new app lettings
@@ -20,6 +25,8 @@ Project Settings
 
 Admin section
 -------------
+
+You can manage users, lettings, address or profiles in admin part:
 
     * url **"admin/"**
     * username **admin**

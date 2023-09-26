@@ -25,7 +25,9 @@ Indices and tables
 
    first_step
    config
+   deploy
    database
+   principle
    home
    lettings
    profiles

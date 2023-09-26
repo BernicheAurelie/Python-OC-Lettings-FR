@@ -1,7 +1,8 @@
 Home
 ====
 
-Home page with society informations and links to profiles and lettings
+Home page with society informations and links to profiles and lettings.
+
 
 get home page
 -----------------
