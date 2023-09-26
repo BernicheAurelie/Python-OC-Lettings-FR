@@ -27,6 +27,7 @@ Indices and tables
    config
    deploy
    database
+   principle
    home
    lettings
    profiles

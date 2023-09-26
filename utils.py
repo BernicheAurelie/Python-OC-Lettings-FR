@@ -30,8 +30,8 @@ logging.config.dictConfig(
     }
 )
 
-logging.info("It's breadcrumbs")
-logging.error("It's an event error", extra=dict(bar=43))
-logging.exception("An exception happened")
+# logging.info("Just informations")
+# logging.error("An error happened", extra=dict(bar=43))
+# logging.exception("An exception happened")
 
 logger = logging.getLogger(__name__)
