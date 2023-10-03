@@ -82,7 +82,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 #### Dockerfile:
 
-Le dockerfile sera utilisé par docker pour créer notre image:
+Le Dockerfile sera utilisé par docker pour créer notre image:
 
 - installer et mettre a jour python3 et postgresql
 - installer et mettre a jour pip
@@ -116,9 +116,8 @@ Création app:
 Envoi de l'image Docker sur heroku:
 
 - `$ heroku container:login`
-- `$ docker tag oc_lettings_site registry.heroku.com/projet13-oc-lettings-site/web`
-- `$ docker push registry.heroku.com/projet13-oc-lettings-site/web`
-- `$ heroku container:release web`
+- `$ heroku container:push -a projet13-oc-lettings-site web`
+- `$ heroku container:release -a projet13-oc-lettings-site web`
 
 ### Intégration Continue avec CircleCI:
 
