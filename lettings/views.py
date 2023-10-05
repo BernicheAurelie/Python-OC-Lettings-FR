@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
 from .models import Letting
 from utils import logger
 
@@ -46,27 +45,9 @@ def letting(request, letting_id):
 
     """
     logger.debug("letting view with title and address")
-    # letting = Letting.objects.get(id=letting_id)
     letting = get_object_or_404(Letting, id=letting_id)
     context = {
         "title": letting.title,
         "address": letting.address,
     }
     return render(request, "lettings/letting.html", context)
-
-
-# def letting(request, letting_id):
-#     """
-#     function to display details on a letting, selecting it by its id
-#     return letting/letting template with letting title
-#     and letting address in context
-#     """
-#     try:
-#         letting = Letting.objects.get(id=letting_id)
-#         context = {
-#             "title": letting.title,
-#             "address": letting.address,
-#         }
-#         return render(request, "lettings/letting.html", context)
-#     except ObjectDoesNotExist:
-#         return render(request, "404.html")

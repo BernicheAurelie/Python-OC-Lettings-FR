@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
 from .models import Profile
 from utils import logger
 
@@ -36,21 +35,5 @@ def profile(request, username):
     """
     logger.debug("profile view with favorite_city and user's informations")
     profile = get_object_or_404(Profile, user__username=username)
-    # profile = Profile.objects.get(user__username=username)
     context = {"profile": profile}
     return render(request, "profiles/profile.html", context)
-
-
-# def profile(request, username):
-#     """
-#     function to display details on a profile,
-#     selecting it by its user's username
-#     return profile/profile template with profile favorite_city
-#     and associated user's informations in context
-#     """
-#     try:
-#         profile = Profile.objects.get(user__username=username)
-#         context = {"profile": profile}
-#         return render(request, "profiles/profile.html", context)
-#     except ObjectDoesNotExist:
-#         return render(request, "404.html")
